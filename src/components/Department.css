@@ -1,0 +1,11 @@
+.Department {
+    margin: 0 auto;
+    background-color: gainsboro;
+    width: 960px;
+}
+
+
+.Department span {
+    margin: 0 auto;
+    width: 100px;
+}

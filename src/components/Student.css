@@ -1,0 +1,29 @@
+
+.container {
+    display: inline;
+}
+
+p span {
+    text-align: center;
+    display: inline !important;
+    padding: 0 50px;
+}
+
+ span {
+    text-align: center;
+    font-weight: normal;
+    display: inline !important;
+    padding: 0 60px;
+  }
+
+.Student {
+    text-align: left;
+    display: inline !important;
+  }
+  
+  h3 span {
+    text-align: center;
+    display: inline !important;
+    padding: 0 50px;
+  }
+  
