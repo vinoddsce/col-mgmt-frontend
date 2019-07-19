@@ -18,28 +18,22 @@ class Navbar extends Component {
     render() {
         const { isAuthenticated, user } = this.props.auth;
         const authLinks = (
-            <ul className="navbar-nav ml-auto">
+            <div style={{ display: 'inline-block', textAlign: 'right', margin: '0px 0px 0px 50px' }}>
                 <a href="" className="nav-link" onClick={this.onLogout.bind(this)}>
                     <img src={user.avatar} alt={user.name} title={user.name}
-                        className="rounded-circle"
                         style={{ width: '25px', marginRight: '5px' }} />
                     Logout
                 </a>
-            </ul>
+            </div>
         )
         const guestLinks = (
-            <ul className="navbar-nav ml-auto">
-                <li className="nav-item">
-                    <Link className="nav-link" to="/register">Sign Up</Link>
-                </li>
-                <li className="nav-item">
-                    <Link className="nav-link" to="/login">Sign In</Link>
-                </li>
-            </ul>
+            <div style={{ display: 'inline-block', textAlign: 'right', margin: '0px 0px 0px 50px' }}>
+                <Link className="label" style={{ margin: '0px 20px' }} to="/register">Sign Up</Link>
+                <Link className="label" to="/login">Sign In</Link>
+            </div>
         )
         return (
-            <nav>
-
+            <div>
                 <ThemeContext.Consumer>
                     {
                         theme => {
@@ -48,29 +42,21 @@ class Navbar extends Component {
                                     (language) => {
                                         return <div style={{
                                             background: theme.config.headerBg, color: theme.config.fontColor,
-                                            width: theme.config.width, height: theme.config.height, display: theme.config.display
+                                            width: theme.config.width, height: theme.config.height
                                         }}>
-                                            <Link className="navbar-brand" to="/">Redux Node Auth</Link>
-                                            <div className="language-selector">
-                                                {language.labels.langSelectLabel}
-                                                <select value={language.name} onChange={(event) => this.props.toggleLanguage(event.currentTarget.value)}>
-                                                    <option value="en">English</option>
-                                                    <option value="gr">Germnan</option>
-                                                    <option value="fr">French</option>
-                                                    <option value="sp">Spanish</option>
-                                                    <option value="hn">Hindi</option>
-                                                </select>
-                                            </div>
-                                            <div className="theme-selector">
-                                                <span className="label">{language.labels.themeSelectLabel}({theme.type})</span>
-                                                <label className="switch">
-                                                    <input type="checkbox" checked={theme.type === 'light'} onChange={(event) => this.props.toggleTheme(event.currentTarget.value)} />
-                                                    <span className="slider round"></span>
-                                                </label>
-                                                <div>
-                                                    {isAuthenticated ? authLinks : guestLinks}
-                                                </div>
-                                            </div>
+
+                                            <span>College Management</span>
+                                            {language.labels.langSelectLabel}
+                                            <select value={language.name} onChange={(event) => this.props.toggleLanguage(event.currentTarget.value)}>
+                                                <option value="en">English</option>
+                                                <option value="gr">Germnan</option>
+                                                <option value="fr">French</option>
+                                                <option value="sp">Spanish</option>
+                                                <option value="hn">Hindi</option>
+                                            </select>
+                                            <span style={{ padding: '0px', margin: '0px 20px' }}>{language.labels.themeSelectLabel}({theme.type})</span>
+                                            <input type="checkbox" checked={theme.type === 'light'} onChange={(event) => this.props.toggleTheme(event.currentTarget.value)} />
+                                            {isAuthenticated ? authLinks : guestLinks}
                                         </div>
                                     }
                                 }
@@ -78,8 +64,8 @@ class Navbar extends Component {
                         }
                     }
                 </ThemeContext.Consumer>
+            </div>
 
-            </nav>
         )
     }
 }

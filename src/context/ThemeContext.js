@@ -7,7 +7,6 @@ export const themeConfig = {
         fontColor: 'black',
         bodybg: 'white',
         logo: lightLogo,
-        display: 'inherit',
         width: '100%',
         height: '60px'
     },
@@ -16,7 +15,6 @@ export const themeConfig = {
         fontColor: 'white',
         bodybg: 'black',
         logo: darkLogo,
-        display: 'inherit',
         width: '100%',
         height: '60px'
     }
