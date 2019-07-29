@@ -15,6 +15,7 @@ import LanguageContext from './context/LanguageContext';
 import { labels } from './context/LanguageContext';
 import { themeConfig } from './context/ThemeContext';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { PrivateRoute } from './components/PrivateRoute';
 
 if (localStorage.jwtToken) {
   setAuthToken(localStorage.jwtToken);
@@ -61,7 +62,7 @@ class App extends Component {
               </LanguageContext.Provider>
             </ThemeContext.Provider>
 
-            <Route exact path="/" component={Home} />
+            <PrivateRoute exact path="/" component={Home} />
             <Route exact path="/register" component={Register} />
             <Route exact path="/login" component={Login} />
           </div>

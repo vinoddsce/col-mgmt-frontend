@@ -7,6 +7,7 @@ import { withRouter } from 'react-router-dom';
 
 import LanguageContext from '../context/LanguageContext';
 import ThemeContext from '../context/ThemeContext';
+import FetchStudentsCountHook from './FetchStudentsCountHook';
 
 class Navbar extends Component {
 
@@ -28,6 +29,7 @@ class Navbar extends Component {
         )
         const guestLinks = (
             <div style={{ display: 'inline-block', textAlign: 'right', margin: '0px 0px 0px 50px' }}>
+
                 <Link className="label" style={{ margin: '0px 20px' }} to="/register">Sign Up</Link>
                 <Link className="label" to="/login">Sign In</Link>
             </div>
@@ -57,6 +59,8 @@ class Navbar extends Component {
                                             <span style={{ padding: '0px', margin: '0px 20px' }}>{language.labels.themeSelectLabel}({theme.type})</span>
                                             <input type="checkbox" checked={theme.type === 'light'} onChange={(event) => this.props.toggleTheme(event.currentTarget.value)} />
                                             {isAuthenticated ? authLinks : guestLinks}
+
+                                            {/* <span>Count</span><FetchStudentsCountHook /> */}
                                         </div>
                                     }
                                 }
