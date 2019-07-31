@@ -3,7 +3,7 @@ import { Route, Redirect } from 'react-router-dom';
 
 export const PrivateRoute = ({ component: Component, ...rest }) => {
     console.log("...rest ", rest);
-    return <Route {...rest} render={props => {
+    return <Route {...rest} render={(props) => {
         console.log("localStorage.getItem('user')", localStorage.getItem('jwtToken'));
         return localStorage.getItem('jwtToken')
             ? <Component {...props} />

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './Student.css';
 
+
 class Student extends Component {
     constructor(props) {
         super(props);

@@ -1,5 +1,12 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import {
+  BrowserRouter as Router,
+  Route,
+  Link,
+  NavLink,
+  Switch,
+  Redirect
+} from 'react-router-dom';
 import { Provider } from 'react-redux';
 import store from './store';
 import jwt_decode from 'jwt-decode';
@@ -27,6 +34,8 @@ if (localStorage.jwtToken) {
     store.dispatch(logoutUser());
     window.location.href = '/login'
   }
+} else {
+  console.log("jwtToken NOT FOUND !!!!!");
 }
 
 class App extends Component {
@@ -61,10 +70,13 @@ class App extends Component {
                 <Navbar toggleLanguage={this.toggleLanguage} toggleTheme={this.toggleTheme} />
               </LanguageContext.Provider>
             </ThemeContext.Provider>
-
-            <PrivateRoute exact path="/" component={Home} />
-            <Route exact path="/register" component={Register} />
-            <Route exact path="/login" component={Login} />
+            <Switch>
+              <Route exact path="/" render={() => (<Redirect to="/home" />)} />
+              {/* <Route path="/home" component={Home} /> */}
+              <PrivateRoute path="/home" component={Home} />
+              <Route path="/register" component={Register} />
+              <Route path="/login" component={Login} />
+            </Switch>
           </div>
         </Router>
       </Provider>

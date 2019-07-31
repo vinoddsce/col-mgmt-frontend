@@ -4,6 +4,8 @@ import rootReducer from './reducers';
 
 const inititalState = {};
 
+console.log("rootReducer", rootReducer);
+
 const store = createStore(
         rootReducer,
         inititalState,

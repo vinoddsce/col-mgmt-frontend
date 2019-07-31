@@ -17,10 +17,14 @@ export const registerUser = (user, history) => dispatch => {
 export const loginUser = (user) => dispatch => {
     axios.post('/login', user)
         .then(res => {
-            const { token } = res.data;
+            // console.log("res.data", res.data);
+            const { token, success } = res.data;
+            console.log("token", token);
+            console.log("success", success);
             localStorage.setItem('jwtToken', token);
             setAuthToken(token);
             const decoded = jwt_decode(token);
+            console.log("decoded", decoded);
             dispatch(setCurrentUser(decoded));
         })
         .catch(err => {

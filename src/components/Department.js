@@ -14,8 +14,14 @@ class Department extends Component {
 
     handleSubmit(event) {
         event.preventDefault();
-        this.props.onStudentAdd(event.target.stdName.value,
-            event.target.stdCourse.value, event.target.stdFees.value);
+        console.log("Addning New Student: ", event.target.stdName.value,
+            event.target.stdCourse.value, event.target.stdFees.value)
+        // var data = {
+        //     name: 
+        // }
+
+        // this.props.onStudentAdd(event.target.stdName.value,
+        //     event.target.stdCourse.value, event.target.stdFees.value);
     }
 
     render() {

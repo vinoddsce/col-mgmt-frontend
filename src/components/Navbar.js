@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { logoutUser } from '../actions/authentication';
@@ -29,9 +29,8 @@ class Navbar extends Component {
         )
         const guestLinks = (
             <div style={{ display: 'inline-block', textAlign: 'right', margin: '0px 0px 0px 50px' }}>
-
-                <Link className="label" style={{ margin: '0px 20px' }} to="/register">Sign Up</Link>
-                <Link className="label" to="/login">Sign In</Link>
+                <NavLink className="label" style={{ margin: '0px 20px' }} to="/register">Sign Up</NavLink>
+                <NavLink className="label" to="/login">Sign In</NavLink>
             </div>
         )
         return (
@@ -46,7 +45,7 @@ class Navbar extends Component {
                                             background: theme.config.headerBg, color: theme.config.fontColor,
                                             width: theme.config.width, height: theme.config.height
                                         }}>
-
+                                            <img src={theme.config.logo} />
                                             <span>College Management</span>
                                             {language.labels.langSelectLabel}
                                             <select value={language.name} onChange={(event) => this.props.toggleLanguage(event.currentTarget.value)}>
@@ -56,6 +55,7 @@ class Navbar extends Component {
                                                 <option value="sp">Spanish</option>
                                                 <option value="hn">Hindi</option>
                                             </select>
+                                            {/* <p>{language.labels.body}</p> */}
                                             <span style={{ padding: '0px', margin: '0px 20px' }}>{language.labels.themeSelectLabel}({theme.type})</span>
                                             <input type="checkbox" checked={theme.type === 'light'} onChange={(event) => this.props.toggleTheme(event.currentTarget.value)} />
                                             {isAuthenticated ? authLinks : guestLinks}
@@ -82,4 +82,4 @@ const mapStateToProps = (state) => ({
     auth: state.auth
 })
 
-export default connect(mapStateToProps, { logoutUser })(withRouter(Navbar));
+export default connect(mapStateToProps, { logoutUser })(Navbar);
